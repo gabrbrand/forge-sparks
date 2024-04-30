@@ -151,17 +151,20 @@ export default class Application extends Adw.Application {
 
     _showAbout() {
         const about = new Adw.AboutDialog({
-            developers: ['Rafael Mardojai CM'],
+            application_icon: pkg.name,
+            application_name: GLib.get_application_name(),
+            developer_name: 'Rafael Mardojai CM',
+            version: pkg.version,
+            comments: _('Get Git forges notifications'),
+            issue_url: 'https://github.com/rafaelmardojai/forge-sparks/issues',
+            developers: ['Rafael Mardojai CM https://mardojai.com/'],
             /* Translators: Replace "translator-credits" with your names, one name per line */
             translator_credits: _('translator-credits'),
-            application_name: GLib.get_application_name(),
-            comments: _('Get Git forges notifications'),
-            application_icon: pkg.name,
-            version: pkg.version,
-            website: '',
-            copyright: 'Copyright 2022 Rafael Mardojai CM',
+            copyright: '© 2022-2024 Rafael Mardojai CM',
             license_type: Gtk.License.MIT_X11,
         });
+        about.add_link(_('Browse the Source Code'), 'https://github.com/rafaelmardojai/forge-sparks');
+        about.add_link(_('Contribute Translations'), 'https://hosted.weblate.org/engage/forge-sparks/');
         about.present(this.window);
     }
 
